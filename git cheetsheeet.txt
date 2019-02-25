@@ -1,0 +1,12 @@
+// fetch changes 
+
+ git pull
+ 
+ 
+ 
+ //adding changes 
+ 
+ 
+ git add .
+ git commit -am "a message describig changes made"
+ git push
