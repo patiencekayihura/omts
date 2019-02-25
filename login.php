@@ -1,40 +1,36 @@
 <?php
-  require_once ("templates/header.php");
+  include ("templates/header.php");
 ?>
-<h3 class="text-center">Log into Your account</h3>
   <div class="col-2">
-  <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
-  <div class="form-controls">
-  <label for="username">Username: </label> <br>
-    <input type="text" class="text" name="username" id="username" placeholder="Email or uername"> <br>
-    <label for="password">Password: </label> <br>
-    <input type="password" name="password" id="password" class="text" placeholder="Password">
-    <br>
-    <button type="submit">Login</button>
-  </div>
-</form>
-<h3 class="text-center">Register if you don't have an account</h3>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
-  <div class="form-controls">
-  <label for="firstaname">firstname: </label> <br>
-    <input type="text" class="text" name="firstname" id="firstname" placeholder="First name"> <br>
-    <label for="lastname">Lastname: </label> <br>
-    <input type="text" name="lastname" id="lastname" class="text" placeholder="Lastname">
-    <br>
-    <label for="Othername">othername: </label> <br>
-    <input type="text" class="text" name="othername" id="othername" placeholder="Othername"> <br>
-    <label for="email">email: </label> <br>
-    <input type="email" name="email" id="email" class="text" placeholder="Email">
-    <br>
+    <div class="login-form">
+      <h1 class="text-center">Log into your account.</h1>
+      <label for="username">Username : </label><br>
+      <input type="text" placeholder="Email or username" class="text-input"><br>
+      <label for="password">Password : </label><br>
+      <input type="password" placeholder="Password" class="text-input"><br><br>
+      <button type="submit">Login</button>
+    </div>
 
-    <label for="phone">phone: </label> <br>
-    <input type="phone" class="text" name="phone" id="phone" placeholder="Phone"> <br>
-    <label for="lastname">password: </label> <br>
-    <input type="password" name="password" id="lastname" class="text" placeholder="Password">
-    <br>
-    <button type="submit">Login</button>
+    <div class="register-form">
+      <h1 class="text-center">Create new account.</h1>
+      <form action="<?php echo _SERVER['PHP_SELF']; ?>">
+      <label for="firstname">Firstname</label><br>
+      <input type="text" name="firstname" placeholder="Firstname" id="firstname" class="text-input" required><br>
+      <label for="lastname">Lastname</label><br>
+      <input type="text" name="lastname" placeholder="Lastname" id="lastname" class="text-input" required><br>
+      <label for="email">email</label><br>
+      <input type="text" name="email" placeholder="Eamil address" id="email" class="text-input" required><br>
+      <label for="username">username</label><br>
+      <input type="text" name="username" placeholder="Username" id="username" class="text-input" required><br>
+      <label for="phone">phone</label><br>
+      <input type="text" name="phone" placeholder="+250787740316" id="phone" class="text-input" required><br>
+      <label for="password">password</label><br>
+      <input type="password" name="password" placeholder="Password" id="password" class="text-input" required><br>
+      <label for="cpassword">password</label><br>
+      <input type="password" name="cpassword" placeholder="Confirm Your password" id="cpassword" class="text-input" required><br>
+      <button type="submit">Register</button><br>
+    </div>
+      </form>
+
   </div>
-</form>
-  </div>
-<?php require_once ("templates/footer.php")?>
+<?php include "templates/footer.php"; ?>

@@ -7,7 +7,7 @@ html, body {
 	font-family: Arial, Helvetica, sans-serif;
 }
  .wrapper {
-	 min-height: 96%;
+	 min-height: 100%;
 	 margin: auto;
  }
  .container {
@@ -48,5 +48,37 @@ html, body {
  .navigation{
  	display: flex;
  	height: 50px;
- 	align-items: center;
+	 align-items: center;
+	 justify-content: space-between;
+	 width: 90%;
+	 margin-left: 1%;
+	 border-bottom: 2px solid gray;
+	 margin-bottom: 2%;
+ }
+ .text-center {
+	 text-align: center;
+ }
+ .col-2 {
+	 display: flex;
+	 justify-content: space-around;
+	 space-between: 10px;
+ }
+ .text-input {
+	 height: 25px;
+	 border-radius: 2px;
+	 border: 1px solid gray;
+	 min-width: 300px;
+ }
+ button {
+	 width: 100px;
+	 height: 30px;
+	 border-radius: 1px;
+	 border: 1px solid #333;
+	 margin: 1%;
+	 background-color: rgba(7, 144, 235, 0.5);
+	 font-weight: bold;
+ }
+ .center {
+	 width: 500px;
+	 margin: auto;
  }
