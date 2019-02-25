@@ -1,5 +1,7 @@
 <?php
 require_once "config/db-connection.php";
+
+
 ?>
 <!DOCTYPE html>
 <html>
