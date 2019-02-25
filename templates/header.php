@@ -22,7 +22,7 @@ require_once "config/db-connection.php";
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li><a href="#">About-us</a></li>
-								<li><a href="#">Appointments</a></li>
+								<li><a href="appointment.php">Appointments</a></li>
 								<li><a href="login.php">Login</a></li>
 								<li><a href="#">Contact-us</a></li>
 							</ul>
