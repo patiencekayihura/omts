@@ -1,5 +1,5 @@
 <?php
-  include ("templates/header.php");
+  require ("templates/header.php");
 ?>
   <div class="col-2">
     <div class="login-form">
