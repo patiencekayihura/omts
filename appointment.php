@@ -8,7 +8,7 @@
     <label for="date">Date Of appointment: </label> <br>
     <input type="date" name="date" id="date" class="text-input" required>
     <br>
-    <button type="submit">Login</button>
+    <button type="submit">Make appointment</button>
   </div>
 </form>
 </div>
