@@ -85,6 +85,8 @@ html, body {
 	 margin: 1%;
 	 background-color: rgba(7, 144, 235, 0.5);
 	 font-weight: bold;
+	 padding: 5px;
+	 text-align: center;
  }
  .button {
 	 text-decoration: none;

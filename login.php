@@ -1,19 +1,48 @@
 <?php
   require ("templates/header.php");
+  $firstname=$lastname=$email=$phone=$password=$cpassword=$username='';
+
+  if(isset($_POST['register'])) {
+    if(notEmpty($_POST)) {
+      $firstname = getValue('firstname');
+      $lastname = getValue('lastname');
+      $username = getValue('username');
+      $email = getValue('email');
+      $password = getValue('password');
+      $phone = getValue('phone');
+      $cpassword = getValue('cpassword');
+      $sql = "INSERT INTO user (firstname,lastname,username,email,phone,password) VALUES ('$firstname', '$lastname', '$username','$email','$phone','$password')";
+      $connection->query($sql);
+      if(mysqli_insert_id($connection)) {
+        echo "<span class='success'>User Is registered</span>";
+        header('Location:index.php');
+      }
+    } else {
+      echo "Same fields have no values";
+    }
+  }
+  if (isset($_POST['login'])) {
+    if (notEmpty($_POST)) {
+      $username = getValue('username');
+      $password = getValue('password');
+    }
+  }
 ?>
   <div class="col-2">
     <div class="login-form">
-      <h1 class="text-center">Log into your account.</h1>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+    <h1 class="text-center">Log into your account.</h1>
       <label for="username">Username : </label><br>
-      <input type="text" placeholder="Email or username" class="text-input"><br>
+      <input type="text" placeholder="Email or username" class="text-input" name="username"><br>
       <label for="password">Password : </label><br>
-      <input type="password" placeholder="Password" class="text-input"><br><br>
-      <button type="submit">Login</button>
+      <input type="password" placeholder="Password" class="text-input" name="password"><br><br>
+      <button type="submit" name="login" value ="log in">Login</button>
+    </form>
     </div>
 
     <div class="register-form">
       <h1 class="text-center">Create new account.</h1>
-      <form action="<?php echo _SERVER['PHP_SELF']; ?>">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
       <label for="firstname">Firstname</label><br>
       <input type="text" name="firstname" placeholder="Firstname" id="firstname" class="text-input" required><br>
       <label for="lastname">Lastname</label><br>
@@ -28,9 +57,28 @@
       <input type="password" name="password" placeholder="Password" id="password" class="text-input" required><br>
       <label for="cpassword">password</label><br>
       <input type="password" name="cpassword" placeholder="Confirm Your password" id="cpassword" class="text-input" required><br>
-      <button type="submit">Register</button><br>
+      <button type="submit" name="register" value="Register">Register</button><br>
     </div>
       </form>
 
   </div>
-<?php include "templates/footer.php"; ?>
+<?php include "templates/footer.php";
+
+function getValue($index) {
+  global $connection;
+  $value = $_POST[$index];
+  $value = strip_tags($value);
+  $value = stripslashes($value);
+  $value = $connection->real_escape_string($value);
+  return $value;
+}
+
+function notEmpty ($values) {
+  foreach($values as $value) {
+    if (empty($value)) {
+      return false;
+    }
+  }
+  return true;
+}
+?>
