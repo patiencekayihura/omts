@@ -1,6 +1,6 @@
 <?php
   require ("templates/header.php");
-  $firstname=$lastname=$email=$phone=$password=$cpassword=$username='';
+  $firstname=$lastname=$email=$phone=$password=$cpassword=$username=$loginError='';
 
   if(isset($_POST['register'])) {
     if(notEmpty($_POST)) {
@@ -25,6 +25,30 @@
     if (notEmpty($_POST)) {
       $username = getValue('username');
       $password = getValue('password');
+
+      $sql = "SELECT * FROM user WHERE email = '$username' OR username = '$username'";
+      $result = $connection->query($sql);
+      if ($result) {
+        if ($result->num_rows > 0) {
+          while ($userAccount = $result->fetch_assoc()) {
+            if (compare($password, $userAccount['password'])) {
+              $_SESSION['username'] =$userAccount['username'];
+              $_SESSION['email'] = $userAccount['email'];
+              $_SESSION['firstname'] = $userAccount['firstname'];
+              $_SESSION['lastname'] = $userAccount['lastname'];
+              $_SESSION['phone'] = $userAccount['phone'];
+              $_SESSION['user_id'] = $userAccount['id'];
+              header("Location:index.php");
+            } else {
+              $loginError = 'Invalid Username or password';
+            }
+          }
+        } else {
+          $loginError = 'Invalid Username or password';
+        }
+      }
+    } else {
+      $loginError = 'Please Enter Username Or email,  and Password';
     }
   }
 ?>
@@ -32,10 +56,11 @@
     <div class="login-form">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     <h1 class="text-center">Log into your account.</h1>
+    <div class="error"><?php echo $loginError; ?></div>
       <label for="username">Username : </label><br>
-      <input type="text" placeholder="Email or username" class="text-input" name="username"><br>
+      <input type="text" placeholder="Email or username" class="text-input" name="username" required><br>
       <label for="password">Password : </label><br>
-      <input type="password" placeholder="Password" class="text-input" name="password"><br><br>
+      <input type="password" placeholder="Password" class="text-input" name="password" required><br><br>
       <button type="submit" name="login" value ="log in">Login</button>
     </form>
     </div>
@@ -80,5 +105,9 @@ function notEmpty ($values) {
     }
   }
   return true;
+}
+
+function compare($value1, $value2) {
+  return $value1 === $value2;
 }
 ?>

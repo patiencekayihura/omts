@@ -1,5 +1,13 @@
 <?php
 require_once "config/db-connection.php";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+	// if ($_SERVER['PHP_SELF'])
+	$currentPage = basename($_SERVER['PHP_SELF']);
+	if ($currentPage !== 'login.php' && $currentPage !== 'index.php'){
+		header("Location:login.php");
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -127,6 +135,15 @@ html, body {
  }
  .home-header {
 	 text-align: center;
+ }
+ .error {
+	 color: red;
+ }
+ .success  {
+	 position: relative;
+	 background: rgba(0, 128, 0, 0.2);
+	 color: green;
+	 font-weight: bold;
  }
 	</style>
 </head>
