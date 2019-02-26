@@ -61,13 +61,13 @@ html, body {
  .col-2 {
 	 display: flex;
 	 justify-content: space-around;
-	 space-between: 10px;
  }
  .text-input {
 	 height: 25px;
 	 border-radius: 2px;
 	 border: 1px solid gray;
 	 min-width: 300px;
+	 padding-left: 5px;
  }
  button {
 	 height: 30px;
@@ -82,5 +82,9 @@ html, body {
  }
  .center {
 	 width: 500px;
+	 margin: auto;
+ }
+ .home-img {
+	 position: relative;
 	 margin: auto;
  }
