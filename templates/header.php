@@ -54,7 +54,7 @@ html, body {
  	padding: 10px;
  }
  .menu ul li:hover {
- 	background-color: gray;
+ 	background-color: rgba(25,255,23,0.3);
  }
  .menu ul li a {
  	text-decoration: none;
@@ -102,7 +102,7 @@ html, body {
 	 padding: 10px;
  }
  button:hover, .button:hover {
-	 background: rgba(74, 182, 255, 0.8);
+	 background: rgba(7, 12, 255, 0.1);
  }
  .center {
 	 width: 500px;
@@ -163,7 +163,13 @@ html, body {
 								<li><a href="index.php">Home</a></li>
 								<li><a href="#">About-us</a></li>
 								<li><a href="appointment.php">Appointments</a></li>
+								<?php if (!isset($_SESSION['user_id'])){?>
 								<li><a href="login.php">Login</a></li>
+								<?php } else {
+									?>
+									<li><a href="logout.php">Logout</a></li>
+									<?php
+								}?>
 								<li><a href="#">Contact-us</a></li>
 							</ul>
 						</div>
