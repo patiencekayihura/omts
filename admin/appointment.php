@@ -1,13 +1,16 @@
 <?php
 include "templates/header.php";
 if (isset($_POST['delete'])) {
-
+  $sql = "DELETE FROM appointment WHERE id = '$_POST[appointment_id]'";
+  $connection->query($sql);
 }
 if (isset($_POST['decline'])) {
-
+  $sql = "UPDATE appointment SET status = 'declined' WHERE id = '$_POST[appointment_id]'";
+  $connection->query($sql);
 }
-if (isset($_POST['accept']) {
-
+if (isset($_POST['accept'])) {
+  $sql = "UPDATE appointment SET status = 'accepted' WHERE id = '$_POST[appointment_id]'";
+  $connection->query($sql);
 }
 ?>
   <h1 class="text-center">Welcome to Admin Panel</h1>
@@ -36,9 +39,17 @@ if (isset($_POST['accept']) {
                     echo "<br><b>Status: </b>".$result['status'];
                     ?>
                     <br>
-                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline"><button name="delete">Decline</button></form>
-                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline"><button name="delete">Accept</button></form>
-                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline"><button name="delete">Delete</button></form>
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline">
+                        <input type="hidden" name="appointment_id" value="<?php echo $result['id']; ?>">
+                      <button name="decline" type="submit">Decline</button></form>
+
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline">
+                        <input type="hidden" name="appointment_id" value="<?php echo $result['id']; ?>">
+                      <button name="accept" type="submit">Accept</button></form>
+
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="inline">
+                        <input type="hidden" name="appointment_id" value="<?php echo $result['id']; ?>">
+                      <button name="delete" type="submit">Delete</button></form>
                     <?php
                     ?></div>
 
