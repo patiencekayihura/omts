@@ -13,8 +13,11 @@ if (isset($_POST['accept'])) {
   $connection->query($sql);
 }
 ?>
+<br>
   <h1 class="text-center">Welcome to Admin Panel</h1>
+  <hr>
   <h4 class="text-center">Here is the List of All appointments Made!</h4>
+  <br>
   <div class="appointments">
     <?php
       $sql = "SELECT * FROM appointment";

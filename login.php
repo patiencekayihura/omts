@@ -38,6 +38,7 @@
               $_SESSION['lastname'] = $userAccount['lastname'];
               $_SESSION['phone'] = $userAccount['phone'];
               $_SESSION['user_id'] = $userAccount['id'];
+              $_SESSION['user_type'] = $userAccount['user_type'];
               header("Location:index.php");
             } else {
               $loginError = 'Invalid Username or password';

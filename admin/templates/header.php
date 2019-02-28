@@ -2,10 +2,14 @@
 require_once "../config/db-connection.php";
 session_start();
 if (!isset($_SESSION['user_id'])) {
-	// if ($_SERVER['PHP_SELF'])
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	if ($currentPage !== 'login.php' && $currentPage !== 'index.php'){
-		header("Location:login.php");
+		header("Location:../login.php");
+	}
+} else if (!($_SESSION['user_type'] === 'admin')) {
+	$currentPage = basename($_SERVER['PHP_SELF']);
+	if ($currentPage !== 'login.php' && $currentPage !== 'index.php'){
+		header("Location:../login.php");
 	}
 }
 ?>
