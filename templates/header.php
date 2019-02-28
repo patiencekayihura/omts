@@ -79,6 +79,19 @@ html, body {
 	 display: flex;
 	 justify-content: space-around;
  }
+ .appointments {
+	 display: grid;
+	 text-align: center;
+	 grid-column-gap: 10px;
+	 grid-row-gap: 10px;
+ }
+ .card {
+	 display: inline-block;
+	 width: 30%;
+	 border: 1px solid gray;
+	 grid-area: "card";
+	 margin: 1px;
+ }
  .text-input {
 	 height: 25px;
 	 border-radius: 2px;
@@ -101,6 +114,7 @@ html, body {
 	 color: black;
 	 padding: 10px;
  }
+ .inline { display: inline-block;}
  button:hover, .button:hover {
 	 background: rgba(7, 12, 255, 0.1);
  }
