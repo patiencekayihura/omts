@@ -1,4 +1,8 @@
 <?php include "templates/header.php";
+if (isset($_POST['cancel'])) {
+  $sql = "DELETE FROM appointment WHERE id = '$_POST[appointment_id]'";
+  $connection->query($sql);
+}
 $user=$massageType=$date=$status=$actionMessage='';
 if(isset($_GET['appointment'])) {
   $sql = "SELECT * FROM appointment WHERE id = '$_GET[appointment]'";

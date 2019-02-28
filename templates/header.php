@@ -105,14 +105,13 @@ html, body {
 	 border: 1px solid #333;
 	 margin: 1%;
 	 background-color: rgba(7, 144, 235, 0.5);
-	 font-weight: bold;
-	 padding: 5px;
 	 text-align: center;
+	 padding: 0 5px;
  }
  .button {
 	 text-decoration: none;
 	 color: black;
-	 padding: 10px;
+	 padding: 5px;
  }
  .inline { display: inline-block;}
  button:hover, .button:hover {
